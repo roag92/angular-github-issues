@@ -1,0 +1,8 @@
+.color-labels {
+    margin: 0 2px !important;
+}
+
+mat-row:hover{
+    cursor: pointer;
+    background-color: #EEEEEE !important;
+}

@@ -1,0 +1,45 @@
+<div *ngIf="issues && issues.length > 0">
+
+    <mat-table #table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="number" mat-sort-header>
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.number}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="user">
+            <mat-header-cell *matHeaderCellDef> User </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <img style="vertical-align:middle;" aria-hidden src="{{element.user.avatar_url}}" height="25" />
+              <span> {{element.user.login}}</span>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="labels">
+            <mat-header-cell *matHeaderCellDef> Labels </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="color-labels" *ngFor="let label of element.labels" matTooltip="{{label.name}}"><i class="fa fa-circle" [ngStyle]="{'color':'#' + label.color}"></i></span>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+            <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="created">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Created at </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.created_at | date: 'medium'}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: headers;" (click)="selectRow(row)"></mat-row>
+
+    </mat-table>
+
+  </div>

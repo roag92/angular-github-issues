@@ -1,0 +1,19 @@
+<mat-toolbar [ngClass]="{'nav': (statusLogged === 'Logged')}" color="primary">
+    <mat-toolbar-row *ngIf="statusLogged === 'Logged' && user !== undefined">
+        <img style="vertical-align:middle;" aria-hidden src="{{user.avatar_url}}" height="25" />
+        <span>Welcome, {{user.username}}</span>
+        <span class="spacer"></span>
+        <a mat-fab-button color="primary" href="https://github.com/angular/angular-cli/wiki/generate-component" target="_blank">
+            <i class="fa fa-2x fa-github"></i>
+        </a>
+        <a mat-fab-button color="primary" (click)="logOutUser()">
+            <i class="fa fa-2x fa-sign-out"></i>
+        </a>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="statusLogged === 'None'">
+        <span>Please register you with a Github account!</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="statusLogged === 'WaitingRedirectResult'">
+        <span>Please wait we are proccessing your session data!</span>
+    </mat-toolbar-row>
+</mat-toolbar>
