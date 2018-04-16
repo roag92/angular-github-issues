@@ -1,9 +1,9 @@
 <div class="row">
     <p>This application has the ability to create and list issues from <a href="https://github.com/angular/angular-cli/wiki/generate-component" target="_blank"><b>angular-github-issues</b></a> repository.</p>
-    <button *ngIf="!addingMode" mat-mini-fab [routerLink]="['new']">
+    <button id="new" *ngIf="!addingMode" mat-mini-fab [routerLink]="['new']">
         <mat-icon aria-label="Add issue">add</mat-icon>
     </button>
-    <button *ngIf="addingMode" mat-mini-fab [routerLink]="['list']">
+    <button id="list" *ngIf="addingMode" mat-mini-fab [routerLink]="['list']">
       <mat-icon aria-label="Retuns issues">arrow_back</mat-icon>
   </button>
 </div>

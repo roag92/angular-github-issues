@@ -8,8 +8,6 @@ Type `npm install` to get all dependencies.
 
 This application does an OAuth Authentication with GitHub through Firebase to create and read issues from this repository.
 
-The testing suite is not available yet, but in the future being available.
-
 ## Configuring repository
 
 Modify `src/main.ts` with your custom Firebase API creedentials.
@@ -40,6 +38,10 @@ private rootUrl = 'https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/';
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Unit Tests
+
+Run `ng test` to run unit test via Karma and Jasmine. For get the coverage run the command `ng test --code-coverage`.
 
 ## Angular CLI
 

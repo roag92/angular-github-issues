@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './auth/auth.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,17 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit {
 
+  private subscription: Subscription;
+  public statusLogged: string;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.authService.checkStatus();
+    this.statusLogged = this.authService.status;
+    this.subscription = this.authService.statusChanged.subscribe((status: string) => {
+      this.statusLogged = status;
+    });
   }
 
 }

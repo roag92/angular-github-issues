@@ -17,7 +17,7 @@ export class AuthComponent implements OnInit {
     this.showLogIn = (this.authService.status !== 'WaitingRedirectResult');
   }
 
-  onSignIn() {
+  private onSignIn() {
     this.showLogIn = false;
     this.authService.signinUser();
   }

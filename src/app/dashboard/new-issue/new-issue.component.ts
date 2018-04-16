@@ -45,12 +45,12 @@ export class NewIssueComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptionAssignees.unsubscribe();
-    this.subscriptionLabels.unsubscribe();
-    this.subscriptionMilestones.unsubscribe();
-    if (this.subscriptionCreateIssue) {
-      this.subscriptionCreateIssue.unsubscribe();
-    }
+    this.unsubscribes([
+      'subscriptionAssignees',
+      'subscriptionLabels',
+      'subscriptionMilestones',
+      'subscriptionCreateIssue'
+    ]);
   }
 
   /**
@@ -68,6 +68,14 @@ export class NewIssueComponent implements OnInit, OnDestroy {
     }
     this.subscriptionCreateIssue = this.githubApiService.createIssue(<Issue>issue).subscribe((response: any) => {
       this.router.navigate(['./../list'], { relativeTo: this.route });
+    });
+  }
+
+  private unsubscribes(keys: Array<string>) {
+    keys.forEach((k) => {
+      if (this[k]) {
+        (<Subscription>this[k]).unsubscribe();
+      }
     });
   }
 

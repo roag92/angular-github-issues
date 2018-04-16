@@ -29,11 +29,13 @@ export class ListIssuesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.issueSubscription.unsubscribe();
+    if (this.issueSubscription) {
+      this.issueSubscription.unsubscribe();
+    }
   }
 
-  selectRow(row: Issue) {
-      console.log(row);
+  private selectRow(row: Issue) {
+    console.log(row);
   }
 
 }

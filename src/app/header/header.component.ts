@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { AuthService } from '../auth/auth.service';
@@ -9,32 +9,28 @@ import { User } from '../auth/auth.model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnChanges {
 
-  private subscription: Subscription;
   private statusLogged: string;
   private user: User;
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-    this.statusLogged = this.authService.status;
+  @Input()
+  set status(statusName: string) {
+    this.statusLogged = (statusName && statusName.trim()) || 'None';
     this.verifyUser();
-    this.authService.statusChanged.subscribe((status: string) => {
-      this.statusLogged = status;
-      this.verifyUser();
-    });
   }
 
-  logOutUser() {
+  constructor(private authService: AuthService) { }
+
+  ngOnChanges(changes) {
+    this.verifyUser();
+  }
+
+  private logOutUser() {
     this.authService.logout();
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  verifyUser() {
+  private verifyUser() {
     if (this.statusLogged === 'Logged') {
       this.user = this.authService.user;
     } else {

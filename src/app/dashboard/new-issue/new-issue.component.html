@@ -2,11 +2,11 @@
     <h3>Register the issue</h3>
     <form (ngSubmit)="onCreateIssue(f)" #f="ngForm">
         <mat-form-field class="full-width">
-            <input matInput placeholder="Title" name="title" ngModel required minlength="5">
+            <input matInput id="title" placeholder="Title" name="title" ngModel required minlength="5">
         </mat-form-field>
-        <md-editor name="body" [(ngModel)]="body" [height]="'300px'" [mode]="'editor'" [options]="options" required maxlength="500"></md-editor>
+        <md-editor id="body" name="body" [(ngModel)]="body" [height]="'300px'" [mode]="'editor'" [options]="options" required maxlength="500"></md-editor>
         <mat-form-field class="full-width">
-            <mat-select placeholder="Assignees" ngModel name="assignees" multiple>
+            <mat-select id="assignees" placeholder="Assignees" ngModel name="assignees" multiple>
                 <mat-option *ngFor="let assignee of listAssignees" [value]="assignee.login">
                     <img style="vertical-align:middle;" aria-hidden src="{{assignee.avatar_url}}" height="25" />
                     <span>{{assignee.login}}</span>
@@ -14,21 +14,21 @@
             </mat-select>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-select placeholder="Labels" ngModel name="labels" multiple>
+            <mat-select id="labels" placeholder="Labels" ngModel name="labels" multiple>
                 <mat-option *ngFor="let label of listLabels" [value]="label.name">
                     <i class="fa fa-circle" [ngStyle]="{'color':'#' + label.color}"></i> <small>{{label.name}}</small>
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-select placeholder="Milestones" ngModel name="milestone" [disabled]="!milestones || milestones.length === 0">
+            <mat-select id="milestone" placeholder="Milestones" ngModel name="milestone" [disabled]="!milestones || milestones.length === 0">
                 <mat-option *ngFor="let milestone of listMilestones" [value]="milestone.id">
                     <span>{{milestone.name}}</span>
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <div class="text-right">
-            <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid">Create</button>
+            <button id="btn-submit" mat-raised-button color="primary" type="submit" [disabled]="!f.valid">Create</button>
         </div>
     </form>
 </div>

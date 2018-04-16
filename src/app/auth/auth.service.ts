@@ -103,6 +103,7 @@ export class AuthService {
     if (auth !== null) {
       this.credential = auth.credential;
       this.user = auth.user;
+      this.setStatus('Logged');
       if (this.getRedirect() === 'true') {
         this.removeRedirect();
         this.navigate('/dashboard');
@@ -118,6 +119,7 @@ export class AuthService {
    */
   private setStatus(status: string) {
     if (this.status !== status) {
+      this.status = status;
       this.statusChanged.next(status);
     }
     localStorage.setItem('status', status);
