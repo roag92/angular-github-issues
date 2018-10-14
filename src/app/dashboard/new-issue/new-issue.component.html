@@ -1,5 +1,5 @@
 <div class="form" *ngIf="!waitingResponse">
-    <h3>Register the issue</h3>
+    <h3>Register an issue</h3>
     <form (ngSubmit)="onCreateIssue(f)" #f="ngForm">
         <mat-form-field class="full-width">
             <input matInput id="title" placeholder="Title" name="title" ngModel required minlength="5">
