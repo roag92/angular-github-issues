@@ -1,5 +1,5 @@
 import { Issue, Assignee, Label, Milestone } from './github.model';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface IssuesService {
 

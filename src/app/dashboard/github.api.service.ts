@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-
-// tslint:disable-next-line:import-blacklist
-import 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 import { IssuesService, AssigneesService, LabelsService, MilestonesServices } from './github.interface';
 import { Assignee, Issue, Milestone, Label } from './github.model';
@@ -16,47 +13,27 @@ export class GithubApiService implements IssuesService, AssigneesService, Labels
 
   constructor(private httpClient: HttpClient) { }
 
-  /**
-   * Create an issue
-   * @returns {Obervable<Issue>}
-   */
-  createIssue(issue: Issue) {
+  createIssue(issue: Issue): Observable<Issue> {
     const url = `${this.rootUrl}issues`;
     return this.httpClient.post<Issue>(url, issue, { observe: 'body' });
   }
 
-  /**
-   * Read all issues
-   * @returns {Obervable<Issue[]>}
-   */
-  readIssues() {
+  readIssues(): Observable<Issue[]> {
     const url = `${this.rootUrl}issues`;
     return this.httpClient.get<Issue[]>(url);
   }
 
-  /**
-   * Read all assignees
-   * @returns {Obervable<Assignee[]>}
-   */
-  readAssignees() {
+  readAssignees(): Observable<Assignee[]> {
     const url = `${this.rootUrl}assignees`;
     return this.httpClient.get<Assignee[]>(url, { observe: 'body' });
   }
 
-  /**
-   * Read all labels
-   * @returns {Obervable<Label[]>}
-   */
-  readLabels() {
+  readLabels(): Observable<Label[]> {
     const url = `${this.rootUrl}labels`;
     return this.httpClient.get<Label[]>(url, { observe: 'body' });
   }
 
-  /**
-   * Read all milestones
-   * @returns {Obervable<Milestone[]>}
-   */
-  readMilestones() {
+  readMilestones(): Observable<Milestone[]> {
     const url = `${this.rootUrl}milestones`;
     return this.httpClient.get<Milestone[]>(url, { observe: 'body' });
   }

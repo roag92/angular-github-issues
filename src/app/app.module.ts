@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 /** Material design modules */
@@ -32,6 +31,8 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard.service';
 import { GithubApiService } from './dashboard/github.api.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
+
+import * as marked from 'marked/marked.min';
 
 @NgModule({
   declarations: [

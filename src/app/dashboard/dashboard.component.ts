@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router, Event, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Router, Event, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { AuthService } from '../auth/auth.service';
 

@@ -8,8 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule, MatAutocompleteModule, MatSelectModule, MatInputModule } from '@angular/material';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs';
 
 import { NewIssueComponent } from './new-issue.component';
 import { GithubApiService } from './../github.api.service';
@@ -57,9 +56,9 @@ describe('NewIssueCompoenet', () => {
   }));
 
   it('should call the githubApiService methods readAssignees(), readLabels() and readMilestones()', () => {
-    spyOn(githubApiService, 'readAssignees').and.returnValue(Observable.of([]));
-    spyOn(githubApiService, 'readLabels').and.returnValue(Observable.of([]));
-    spyOn(githubApiService, 'readMilestones').and.returnValue(Observable.of([]));
+    spyOn(githubApiService, 'readAssignees').and.returnValue(of([]));
+    spyOn(githubApiService, 'readLabels').and.returnValue(of([]));
+    spyOn(githubApiService, 'readMilestones').and.returnValue(of([]));
     newIssue.ngOnInit();
     fixture.detectChanges();
     expect(githubApiService.readAssignees).toHaveBeenCalled();
@@ -68,9 +67,9 @@ describe('NewIssueCompoenet', () => {
   });
 
   it('should be disabled the milestone select when the list is empty or undefined', () => {
-    spyOn(githubApiService, 'readAssignees').and.returnValue(Observable.of([]));
-    spyOn(githubApiService, 'readLabels').and.returnValue(Observable.of([]));
-    spyOn(githubApiService, 'readMilestones').and.returnValue(Observable.of([]));
+    spyOn(githubApiService, 'readAssignees').and.returnValue(of([]));
+    spyOn(githubApiService, 'readLabels').and.returnValue(of([]));
+    spyOn(githubApiService, 'readMilestones').and.returnValue(of([]));
     githubApiService.readMilestones();
     fixture.detectChanges();
     newIssue.ngOnInit();
@@ -81,10 +80,10 @@ describe('NewIssueCompoenet', () => {
   });
 
   it('should the method githubApiService.createIssue()', () => {
-    spyOn(githubApiService, 'readAssignees').and.returnValue(Observable.of([]));
-    spyOn(githubApiService, 'readLabels').and.returnValue(Observable.of([]));
-    spyOn(githubApiService, 'readMilestones').and.returnValue(Observable.of([]));
-    spyOn(githubApiService, 'createIssue').and.returnValue(Observable.of({}));
+    spyOn(githubApiService, 'readAssignees').and.returnValue(of([]));
+    spyOn(githubApiService, 'readLabels').and.returnValue(of([]));
+    spyOn(githubApiService, 'readMilestones').and.returnValue(of([]));
+    spyOn(githubApiService, 'createIssue').and.returnValue(of({}));
     newIssue.ngOnInit();
     fixture.detectChanges();
     fixture.debugElement.query(By.css('#title')).nativeElement.value = 'A test';

@@ -5,12 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatTableModule, MatTooltipModule, MatChipsModule, MatTableDataSource } from '@angular/material';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs';
 
 import { ListIssuesComponent } from './list-issues.component';
 import { GithubApiService } from './../github.api.service';
-import { Issue } from '../github.model';
 
 const mockIssues = [{
   'url': 'https://api.github.com/repos/roman92/angular-github-issues/issues/2',
@@ -195,13 +193,13 @@ describe('ListIssuesComponent', () => {
   }));
 
   it('should call the method githubApiService.readIssues()', async(() => {
-    spyOn(githubApiService, 'readIssues').and.returnValue(Observable.of([]));
+    spyOn(githubApiService, 'readIssues').and.returnValue(of([]));
     listIssues.ngOnInit();
     expect(githubApiService.readIssues).toHaveBeenCalled();
   }));
 
   it('should not show the issues tables when the issues list is empty', async(() => {
-    spyOn(githubApiService, 'readIssues').and.returnValue(Observable.of([]));
+    spyOn(githubApiService, 'readIssues').and.returnValue(of([]));
     listIssues.ngOnInit();
     fixture.detectChanges();
     expect(githubApiService.readIssues).toHaveBeenCalled();
@@ -210,7 +208,7 @@ describe('ListIssuesComponent', () => {
   }));
 
   it('should show the issues tables when the issues list has items', async(() => {
-    spyOn(githubApiService, 'readIssues').and.returnValue(Observable.of(mockIssues));
+    spyOn(githubApiService, 'readIssues').and.returnValue(of(mockIssues));
     listIssues.ngOnInit();
     fixture.detectChanges();
     expect(githubApiService.readIssues).toHaveBeenCalled();

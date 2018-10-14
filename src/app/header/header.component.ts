@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
 
 import { AuthService } from '../auth/auth.service';
 import { User } from '../auth/auth.model';

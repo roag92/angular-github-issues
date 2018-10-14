@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable, NgZone } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 import { User, Credential, Auth } from './auth.model';
 
@@ -70,7 +70,7 @@ export class AuthService {
    * This method is called when the app is waiting for the result of OAuth
    */
   private getRedirectResult() {
-    firebase.auth().getRedirectResult().then((result) => {
+    firebase.auth().getRedirectResult().then((result: any) => {
       if (result.credential) {
         this.credential = <Credential>result.credential;
         this.user = <User>{
