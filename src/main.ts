@@ -9,14 +9,9 @@ import 'web-animations-js';
 
 import * as firebase from 'firebase';
 
-firebase.initializeApp({
-  apiKey: '',
-  authDomain: '',
-  databaseURL: '',
-  projectId: '',
-  storageBucket: '',
-  messagingSenderId: ''
-});
+firebase.initializeApp(
+  environment.firebase
+);
 
 if (environment.production) {
   enableProdMode();

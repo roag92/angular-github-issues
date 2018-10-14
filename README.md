@@ -1,6 +1,6 @@
 # AngularGithubIssues
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
 
 ## Installing repository
 
@@ -10,34 +10,39 @@ This application does an OAuth Authentication with GitHub through Firebase to cr
 
 ## Configuring repository
 
-Modify `src/main.ts` with your custom Firebase API creedentials.
+Copy `src/environments/environment` content in a new file called `src/environments/environment.local.ts`. Then add your firebase and github config.
+
+First you must create a `Firebase Project` for more information check [this](https://firebase.google.com/docs/web/setup?authuser=0).
+
+The you must create a `Github Application` for more information check [this](https://developer.github.com/apps/building-github-apps/creating-a-github-app/).
 
 ```typescript
-// Line 12
-firebase.initializeApp({
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'app-name.firebaseapp.com',
-  databaseURL: 'https://app-name.firebaseio.com',
-  projectId: 'app-name',
-  storageBucket: 'app-name.appspot.com',
-  messagingSenderId: 'xxxxx'
+export const environment = {
+  production: true,
+  firebase: {
+    apiKey: 'YOUR_API_KEY',
+    authDomain: 'app-name.firebaseapp.com',
+    databaseURL: 'https://app-name.firebaseio.com',
+    projectId: 'app-name',
+    storageBucket: 'app-name.appspot.com',
+    messagingSenderId: 'xxxxx'
+  },
+  {
+    github: {
+      github: 'https://api.github.com',
+      service: 'repos',
+      username: 'YOUR-USERNAME',
+      repository: 'YOUR-REPOSITORY'
+    }
+  }
 });
 ```
 
-If you want try with your repository, you must create a Github Application for more information check the [documentation](https://developer.github.com/apps/building-github-apps/creating-a-github-app/).
-
-_**Note**: You need add the Firebase URL's in your Github application._
-
-You can change the repository editing the  `src/app/dashboard/github.api.service.ts` file.
-
-```typescript
-// Line 15
-private rootUrl = 'https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/';
-```
+> _**Important**: Don't forget to register the Firebase URL's in your Github application._
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Unit Tests
 

@@ -1,17 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
 import { IssuesService, AssigneesService, LabelsService, MilestonesServices } from './github.interface';
-import { Assignee, Issue, Milestone, Label } from './github.model';
+import { Assignee, Issue, Milestone, Label, GithubConfig, GITHUB_CONFIG } from './github.model';
 
 @Injectable()
 export class GithubApiService implements IssuesService, AssigneesService, LabelsService, MilestonesServices {
 
-  private rootUrl = 'https://api.github.com/repos/roman92/angular-github-issues/';
+  private rootUrl;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    @Inject(GITHUB_CONFIG) githubConfig: GithubConfig,
+    private httpClient: HttpClient
+  ) {
+    this.rootUrl = `${githubConfig.api}/${githubConfig.service}/${githubConfig.username}/${githubConfig.repository}/`;
+  }
 
   createIssue(issue: Issue): Observable<Issue> {
     const url = `${this.rootUrl}issues`;

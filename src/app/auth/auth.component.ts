@@ -13,11 +13,11 @@ export class AuthComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.showLogIn = (this.authService.status !== 'WaitingRedirectResult');
   }
 
-  private onSignIn() {
+  private onSignIn(): void {
     this.showLogIn = false;
     this.authService.signinUser();
   }

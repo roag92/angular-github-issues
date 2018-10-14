@@ -18,6 +18,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
+import { environment } from './../environments/environment';
+
 import { AppRoutingModule } from './app.routing.module';
 
 import { AppComponent } from './app.component';
@@ -32,7 +34,7 @@ import { AuthGuard } from './auth/auth.guard.service';
 import { GithubApiService } from './dashboard/github.api.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
-import * as marked from 'marked/marked.min';
+import { GITHUB_CONFIG } from './dashboard/github.model';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import * as marked from 'marked/marked.min';
     AuthGuard,
     GithubApiService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: GITHUB_CONFIG, useValue: environment.github }
   ],
   bootstrap: [AppComponent]
 })

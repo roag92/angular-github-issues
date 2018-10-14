@@ -20,21 +20,22 @@ export class ListIssuesComponent implements OnInit, OnDestroy {
 
   constructor(private githubApiService: GithubApiService) { }
 
-  ngOnInit() {
-    this.issueSubscription = this.githubApiService.readIssues().subscribe((issues: Issue[]) => {
-      this.issues = issues;
-      this.dataSource = new MatTableDataSource(issues);
-    });
+  ngOnInit(): void {
+    this.issueSubscription = this.githubApiService.readIssues()
+      .subscribe((issues: Issue[]) => {
+        this.issues = issues;
+        this.dataSource = new MatTableDataSource(issues);
+      });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.issueSubscription) {
       this.issueSubscription.unsubscribe();
     }
   }
 
-  private selectRow(row: Issue) {
-    console.log(row);
+  private selectRow(row: Issue): void {
+    // TODO: Implement method
   }
 
 }

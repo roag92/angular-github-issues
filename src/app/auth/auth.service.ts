@@ -16,20 +16,14 @@ export class AuthService {
 
   constructor(private router: Router, private route: ActivatedRoute, private zone: NgZone) { }
 
-  /**
-   * Method to call the firebase API to do the Github's OAuth
-   */
-  signinUser() {
+  signinUser(): void {
     const githubAuthProvider = new firebase.auth.GithubAuthProvider();
     githubAuthProvider.addScope('user,public_repo');
     firebase.auth().signInWithRedirect(githubAuthProvider);
     this.setStatus('WaitingRedirectResult');
   }
 
-  /**
-   * Checks the status to read the session in localStorage or trigger the getRedirectResult
-   */
-  checkStatus() {
+  checkStatus(): void {
     this.status = this.getStatus();
     if (this.status === 'WaitingRedirectResult') {
       this.getRedirectResult();
@@ -38,10 +32,7 @@ export class AuthService {
     }
   }
 
-  /**
-   * Exit of application
-   */
-  logout() {
+  logout(): void {
     this.credential = new Credential('', '', '');
     this.user = new User();
     this.clearLocalStorage();
@@ -49,27 +40,15 @@ export class AuthService {
     this.navigate('/auth');
   }
 
-  /**
-   * Get the accessToken (used in HTTP Requests)
-   * @returns {string}
-   */
-  getToken() {
+  getToken(): string {
     return this.credential.accessToken;
   }
 
-  /**
-   * Method to know if exists a session
-   * @returns {boolean}
-   */
-  isAuthenticated() {
+  isAuthenticated(): boolean {
     return (this.credential.accessToken !== '');
   }
 
-
-  /**
-   * This method is called when the app is waiting for the result of OAuth
-   */
-  private getRedirectResult() {
+  private getRedirectResult(): void {
     firebase.auth().getRedirectResult().then((result: any) => {
       if (result.credential) {
         this.credential = <Credential>result.credential;
@@ -94,10 +73,7 @@ export class AuthService {
     });
   }
 
-  /**
-   * Recover the data session from localstorage
-   */
-  private readAuth() {
+  private readAuth(): void {
     const auth: any = this.getAuth();
     this.status = this.getStatus();
     if (auth !== null) {
@@ -113,11 +89,7 @@ export class AuthService {
     }
   }
 
-  /**
-   * Set the status in localstorage
-   * @param status {string}
-   */
-  private setStatus(status: string) {
+  private setStatus(status: string): void {
     if (this.status !== status) {
       this.status = status;
       this.statusChanged.next(status);
@@ -125,27 +97,15 @@ export class AuthService {
     localStorage.setItem('status', status);
   }
 
-  /**
-   * Get the status from localstorage
-   * @returns {string}
-   */
   private getStatus(): string {
     return localStorage.getItem('status');
   }
 
-  /**
-   * Set the auth data in localstorage
-   * @param auth {Auth}
-   */
   private setAuth(auth: Auth) {
     localStorage.setItem('auth', JSON.stringify(auth));
   }
 
-  /**
-   * Get the auth data from localstorage
-   * @returns {Auth|null}
-   */
-  private getAuth() {
+  private getAuth(): Auth|null {
     const auth = JSON.parse(localStorage.getItem('auth'));
     if (auth !== null) {
       return <Auth>auth;
@@ -153,32 +113,19 @@ export class AuthService {
     return auth;
   }
 
-  /**
-   * Get the flag to redirect
-   * @returns {string}
-   */
-  private getRedirect() {
+  private getRedirect(): string {
     return localStorage.getItem('redirect');
   }
 
-  /**
-   * Remove the redirect value from localstorage
-   */
-  private removeRedirect() {
+  private removeRedirect(): void {
     localStorage.removeItem('redirect');
   }
 
-  /**
-   * Remove all data in localstorage
-   */
-  private clearLocalStorage() {
+  private clearLocalStorage(): void {
     localStorage.clear();
   }
 
-  /**
-   * Trigger the navigate routing
-   */
-  private navigate(state: string) {
+  private navigate(state: string): void {
     this.router.navigate([state]);
   }
 

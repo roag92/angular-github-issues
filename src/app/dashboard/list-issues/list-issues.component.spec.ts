@@ -7,8 +7,11 @@ import { MatTableModule, MatTooltipModule, MatChipsModule, MatTableDataSource } 
 
 import { of } from 'rxjs';
 
+import { environment } from './../../../environments/environment';
+
 import { ListIssuesComponent } from './list-issues.component';
 import { GithubApiService } from './../github.api.service';
+import { GITHUB_CONFIG } from './../github.model';
 
 const mockIssues = [{
   'url': 'https://api.github.com/repos/roman92/angular-github-issues/issues/2',
@@ -176,7 +179,8 @@ describe('ListIssuesComponent', () => {
         RouterTestingModule
       ],
       providers: [
-        GithubApiService
+        GithubApiService,
+        { provide: GITHUB_CONFIG, useValue: environment.github }
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(ListIssuesComponent);

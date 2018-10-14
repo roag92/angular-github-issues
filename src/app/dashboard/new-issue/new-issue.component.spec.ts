@@ -10,8 +10,11 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 import { of } from 'rxjs';
 
+import { environment } from './../../../environments/environment';
+
 import { NewIssueComponent } from './new-issue.component';
 import { GithubApiService } from './../github.api.service';
+import { GITHUB_CONFIG } from './../github.model';
 
 describe('NewIssueCompoenet', () => {
 
@@ -39,7 +42,8 @@ describe('NewIssueCompoenet', () => {
         ])
       ],
       providers: [
-        GithubApiService
+        GithubApiService,
+        { provide: GITHUB_CONFIG, useValue: environment.github }
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(NewIssueComponent);

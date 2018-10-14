@@ -21,15 +21,15 @@ export class HeaderComponent implements OnChanges {
 
   constructor(private authService: AuthService) { }
 
-  ngOnChanges(changes) {
+  ngOnChanges(changes): void {
     this.verifyUser();
   }
 
-  private logOutUser() {
+  private logOutUser(): void {
     this.authService.logout();
   }
 
-  private verifyUser() {
+  private verifyUser(): void {
     if (this.statusLogged === 'Logged') {
       this.user = this.authService.user;
     } else {

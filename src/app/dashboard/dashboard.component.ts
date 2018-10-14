@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.addingMode = (this.router.url.indexOf('new') !== -1);
     this.routingEvent = this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.routingEvent) {
       this.routingEvent.unsubscribe();
     }

@@ -7,8 +7,11 @@ import { Component } from '@angular/core';
 
 import { MatIconModule } from '@angular/material';
 
+import { environment } from './../../environments/environment';
+
 import { DashboardComponent } from './dashboard.component';
 import { AuthService } from './../auth/auth.service';
+import { GITHUB_CONFIG } from './github.model';
 
 @Component({
   template: `ListIssuesComponent`
@@ -49,7 +52,10 @@ describe('DashboardComponent', () => {
         MatIconModule,
         RouterTestingModule.withRoutes(routes)
       ],
-      providers: [AuthService]
+      providers: [
+        AuthService,
+        { provide: GITHUB_CONFIG, useValue: environment.github }
+      ]
     }).compileComponents();
     fixture = TestBed.createComponent(DashboardComponent);
     dashboard = fixture.debugElement.componentInstance;

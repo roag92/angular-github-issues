@@ -50,7 +50,7 @@ describe('AppComponent', () => {
         RouterTestingModule.withRoutes(routes)
       ],
       providers: [
-        AuthService
+        AuthService,
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
