@@ -82,10 +82,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "codeCoverage": true,
+            "sourceMap": true,
             "main": "src/test.ts",
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
+            "codeCoverageExclude": [
+              "src/test.ts",
+              "src/polyfills.ts",
+              "src/environments/environment.ts"
+            ],
             "scripts": [
               "node_modules/marked/marked.min.js",
               "node_modules/highlight.js/lib/highlight.js",

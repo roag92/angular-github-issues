@@ -17,7 +17,7 @@ module.exports = function(config) {
             captureConsole: false
         },
         coverageIstanbulReporter: {
-            dir: require('path').join(__dirname, 'coverage'), reports: ['html', 'lcovonly'],
+            reports: ['html', 'lcovonly'],
             fixWebpackSourcePaths: true
         },
         reporters: ['progress', 'kjhtml'],
