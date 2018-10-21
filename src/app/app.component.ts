@@ -9,11 +9,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
   private subscription: Subscription;
   public statusLogged: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.checkStatus();
@@ -22,5 +21,4 @@ export class AppComponent implements OnInit {
       this.statusLogged = status;
     });
   }
-
 }

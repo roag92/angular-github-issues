@@ -8,13 +8,9 @@ import { Assignee, Issue, Milestone, Label, GithubConfig, GITHUB_CONFIG } from '
 
 @Injectable()
 export class GithubApiService implements IssuesService, AssigneesService, LabelsService, MilestonesServices {
-
   private rootUrl;
 
-  constructor(
-    @Inject(GITHUB_CONFIG) githubConfig: GithubConfig,
-    private httpClient: HttpClient
-  ) {
+  constructor(@Inject(GITHUB_CONFIG) githubConfig: GithubConfig, private httpClient: HttpClient) {
     this.rootUrl = `${githubConfig.api}/${githubConfig.service}/${githubConfig.username}/${githubConfig.repository}/`;
   }
 
@@ -42,5 +38,4 @@ export class GithubApiService implements IssuesService, AssigneesService, Labels
     const url = `${this.rootUrl}milestones`;
     return this.httpClient.get<Milestone[]>(url, { observe: 'body' });
   }
-
 }

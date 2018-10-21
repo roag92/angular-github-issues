@@ -17,7 +17,6 @@ import { GithubApiService } from './../github.api.service';
 import { GITHUB_CONFIG } from './../github.model';
 
 describe('NewIssueCompoenet', () => {
-
   let fixture: ComponentFixture<NewIssueComponent>;
   let newIssue: NewIssueComponent;
 
@@ -25,9 +24,7 @@ describe('NewIssueCompoenet', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        NewIssueComponent
-      ],
+      declarations: [NewIssueComponent],
       imports: [
         BrowserAnimationsModule,
         FormsModule,
@@ -37,14 +34,9 @@ describe('NewIssueCompoenet', () => {
         MatAutocompleteModule,
         MatSelectModule,
         LMarkdownEditorModule,
-        RouterTestingModule.withRoutes([
-          { path: 'list', component: NewIssueComponent }
-        ])
+        RouterTestingModule.withRoutes([{ path: 'list', component: NewIssueComponent }])
       ],
-      providers: [
-        GithubApiService,
-        { provide: GITHUB_CONFIG, useValue: environment.github }
-      ]
+      providers: [GithubApiService, { provide: GITHUB_CONFIG, useValue: environment.github }]
     }).compileComponents();
     fixture = TestBed.createComponent(NewIssueComponent);
     newIssue = fixture.debugElement.componentInstance;
@@ -99,5 +91,4 @@ describe('NewIssueCompoenet', () => {
     const h3 = fixture.debugElement.query(By.css('h3'));
     expect(h3.nativeElement.textContent.trim()).toBe('The issue was delivered, wait for redirect!');
   });
-
 });

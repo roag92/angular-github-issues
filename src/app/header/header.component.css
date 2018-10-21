@@ -1,32 +1,32 @@
 .nav .mat-toolbar-row,
 .nav .mat-toolbar-single-row {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .mat-toolbar-multiple-rows.nav {
-    min-height: 0 !important;
+  min-height: 0 !important;
 }
 
 .nav .mat-toolbar-row {
-    height: auto !important;
+  height: auto !important;
 }
 
 mat-toolbar.nav img {
-    margin: 0 5px;
+  margin: 0 5px;
 }
 
 mat-toolbar.nav a {
-    font-size: 18px;
-    box-shadow: none !important;
-    padding: 10px 15px;
-    color: #FFF;
+  font-size: 18px;
+  box-shadow: none !important;
+  padding: 10px 15px;
+  color: #fff;
 }
 
 mat-toolbar.nav a:hover {
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12) !important;
-    cursor: pointer;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
+  cursor: pointer;
 }
 
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }

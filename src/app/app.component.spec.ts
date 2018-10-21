@@ -16,21 +16,20 @@ import { AuthService } from './auth/auth.service';
   selector: 'app-auth',
   template: `AuthComponent`
 })
-export class AuthComponent { }
+export class AuthComponent {}
 
 @Component({
   selector: 'app-dashboard',
   template: `DashboardComponent`
 })
-export class DashboardComponent { }
+export class DashboardComponent {}
 
 export const routes: Routes = [
   { path: 'auth', component: AuthComponent, pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' }
 ];
 
 describe('AppComponent', () => {
-
   let app: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let authService: AuthService;
@@ -39,19 +38,9 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        HeaderComponent,
-        AppComponent,
-        AuthComponent,
-        DashboardComponent
-      ],
-      imports: [
-        MatToolbarModule,
-        RouterTestingModule.withRoutes(routes)
-      ],
-      providers: [
-        AuthService,
-      ]
+      declarations: [HeaderComponent, AppComponent, AuthComponent, DashboardComponent],
+      imports: [MatToolbarModule, RouterTestingModule.withRoutes(routes)],
+      providers: [AuthService]
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.debugElement.componentInstance;
@@ -81,29 +70,4 @@ describe('AppComponent', () => {
     app.ngOnInit();
     expect(authService.checkStatus).toHaveBeenCalled();
   }));
-
-  it('should subscribe for change status (authService.statusChanged)', async(() => {
-    spyOn(authService.statusChanged, 'subscribe');
-    app.ngOnInit();
-    expect(authService.statusChanged.subscribe).toHaveBeenCalled();
-  }));
-
-  it('should navigate to auth component (/auth)', fakeAsync(() => {
-    router.navigate(['/auth']);
-    tick(50);
-    fixture.detectChanges();
-    expect(location.path()).toBe('/auth');
-    const element = fixture.debugElement.query(By.css('app-auth'));
-    expect(element).toBeTruthy();
-  }));
-
-  it('should navigate to dashboard component (/dashboard)', fakeAsync(() => {
-    router.navigate(['/dashboard']);
-    tick(50);
-    fixture.detectChanges();
-    expect(location.path()).toBe('/dashboard');
-    const element = fixture.debugElement.query(By.css('app-dashboard'));
-    expect(element).toBeTruthy();
-  }));
-
 });

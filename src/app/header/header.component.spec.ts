@@ -10,7 +10,6 @@ import { AuthService } from '../auth/auth.service';
 import { User } from '../auth/auth.model';
 
 describe('HeaderComponent', () => {
-
   let fixture: ComponentFixture<HeaderComponent>;
   let header: HeaderComponent;
 
@@ -18,16 +17,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        HeaderComponent
-      ],
-      imports: [
-        MatToolbarModule,
-        RouterTestingModule
-      ],
-      providers: [
-        AuthService
-      ]
+      declarations: [HeaderComponent],
+      imports: [MatToolbarModule, RouterTestingModule],
+      providers: [AuthService]
     }).compileComponents();
     fixture = TestBed.createComponent(HeaderComponent);
     header = fixture.debugElement.componentInstance;
@@ -58,11 +50,11 @@ describe('HeaderComponent', () => {
 
   it('should show data of a logged user in the toolbar', async(() => {
     authService.user = <User>{
-      'avatar_url': 'https://avatars1.githubusercontent.com/u/5541248?v=4',
-      'email': 'ricardo.roman.ag@gmail.com',
-      'location': 'México',
-      'name': 'Ricardo Román',
-      'username': 'roman92'
+      avatar_url: 'https://avatars1.githubusercontent.com/u/5541248?v=4',
+      email: 'ricardo.roman.ag@gmail.com',
+      location: 'México',
+      name: 'Ricardo Román',
+      username: 'roman92'
     };
     header.status = 'Logged';
     fixture.detectChanges();
@@ -72,11 +64,11 @@ describe('HeaderComponent', () => {
 
   it('should logout when an user was logged', async(() => {
     authService.user = <User>{
-      'avatar_url': 'https://avatars1.githubusercontent.com/u/5541248?v=4',
-      'email': 'ricardo.roman.ag@gmail.com',
-      'location': 'México',
-      'name': 'Ricardo Román',
-      'username': 'roman92'
+      avatar_url: 'https://avatars1.githubusercontent.com/u/5541248?v=4',
+      email: 'ricardo.roman.ag@gmail.com',
+      location: 'México',
+      name: 'Ricardo Román',
+      username: 'roman92'
     };
     header.status = 'Logged';
     fixture.detectChanges();
@@ -85,5 +77,4 @@ describe('HeaderComponent', () => {
     button.click();
     expect(authService.logout).toHaveBeenCalled();
   }));
-
 });

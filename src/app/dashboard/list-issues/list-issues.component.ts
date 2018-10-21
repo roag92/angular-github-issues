@@ -11,21 +11,19 @@ import { Issue } from '../github.model';
   styleUrls: ['./list-issues.component.css']
 })
 export class ListIssuesComponent implements OnInit, OnDestroy {
-
   private issueSubscription: Subscription;
 
   private issues = [];
   private dataSource: MatTableDataSource<Issue>;
   private headers = ['number', 'title', 'user', 'labels', 'state', 'created'];
 
-  constructor(private githubApiService: GithubApiService) { }
+  constructor(private githubApiService: GithubApiService) {}
 
   ngOnInit(): void {
-    this.issueSubscription = this.githubApiService.readIssues()
-      .subscribe((issues: Issue[]) => {
-        this.issues = issues;
-        this.dataSource = new MatTableDataSource(issues);
-      });
+    this.issueSubscription = this.githubApiService.readIssues().subscribe((issues: Issue[]) => {
+      this.issues = issues;
+      this.dataSource = new MatTableDataSource(issues);
+    });
   }
 
   ngOnDestroy(): void {
@@ -37,5 +35,4 @@ export class ListIssuesComponent implements OnInit, OnDestroy {
   private selectRow(row: Issue): void {
     // TODO: Implement method
   }
-
 }

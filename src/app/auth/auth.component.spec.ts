@@ -6,7 +6,6 @@ import { AuthComponent } from './auth.component';
 import { AuthService } from './auth.service';
 
 describe('AuthComponent', () => {
-
   let fixture: ComponentFixture<AuthComponent>;
   let auth: AuthComponent;
 
@@ -14,15 +13,9 @@ describe('AuthComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AuthComponent
-      ],
-      imports: [
-        RouterTestingModule
-      ],
-      providers: [
-        AuthService
-      ]
+      declarations: [AuthComponent],
+      imports: [RouterTestingModule],
+      providers: [AuthService]
     }).compileComponents();
     fixture = TestBed.createComponent(AuthComponent);
     auth = fixture.debugElement.componentInstance;
@@ -56,5 +49,4 @@ describe('AuthComponent', () => {
     const element = fixture.debugElement.query(By.css('button#login'));
     expect(element).toBeNull();
   }));
-
 });

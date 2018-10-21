@@ -12,7 +12,6 @@ import { Assignee, Milestone, Label, Issue } from '../github.model';
   styleUrls: ['./new-issue.component.css']
 })
 export class NewIssueComponent implements OnInit, OnDestroy {
-
   private waitingResponse = false;
   private options = {
     hideIcons: ['Image']
@@ -30,21 +29,18 @@ export class NewIssueComponent implements OnInit, OnDestroy {
   private subscriptionMilestones: Subscription;
   private subscriptionCreateIssue: Subscription;
 
-  constructor(private githubApiService: GithubApiService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private githubApiService: GithubApiService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.subscriptionAssignees = this.githubApiService.readAssignees()
-      .subscribe((assignees: Assignee[]) => {
-        this.listAssignees = assignees;
-      });
-    this.subscriptionLabels = this.githubApiService.readLabels()
-      .subscribe((labels: Label[]) => {
-        this.listLabels = labels;
-      });
-    this.subscriptionMilestones = this.githubApiService.readMilestones()
-      .subscribe((milestones: Milestone[]) => {
-        this.listMilestones = milestones;
-      });
+    this.subscriptionAssignees = this.githubApiService.readAssignees().subscribe((assignees: Assignee[]) => {
+      this.listAssignees = assignees;
+    });
+    this.subscriptionLabels = this.githubApiService.readLabels().subscribe((labels: Label[]) => {
+      this.listLabels = labels;
+    });
+    this.subscriptionMilestones = this.githubApiService.readMilestones().subscribe((milestones: Milestone[]) => {
+      this.listMilestones = milestones;
+    });
   }
 
   ngOnDestroy(): void {
@@ -69,18 +65,16 @@ export class NewIssueComponent implements OnInit, OnDestroy {
     if (issue.labels === '') {
       delete issue.labels;
     }
-    this.subscriptionCreateIssue = this.githubApiService.createIssue(<Issue>issue)
-      .subscribe((response: any) => {
-        this.router.navigate(['./../list'], { relativeTo: this.route });
-      });
+    this.subscriptionCreateIssue = this.githubApiService.createIssue(<Issue>issue).subscribe((response: any) => {
+      this.router.navigate(['./../list'], { relativeTo: this.route });
+    });
   }
 
   private unsubscribes(keys: Array<string>): void {
-    keys.forEach((k) => {
+    keys.forEach(k => {
       if (this[k]) {
         (<Subscription>this[k]).unsubscribe();
       }
     });
   }
-
 }

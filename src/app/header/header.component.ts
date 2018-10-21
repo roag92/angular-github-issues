@@ -9,7 +9,6 @@ import { User } from '../auth/auth.model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnChanges {
-
   private statusLogged: string;
   private user: User;
 
@@ -19,7 +18,7 @@ export class HeaderComponent implements OnChanges {
     this.verifyUser();
   }
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnChanges(changes): void {
     this.verifyUser();
@@ -36,5 +35,4 @@ export class HeaderComponent implements OnChanges {
       this.user = new User();
     }
   }
-
 }

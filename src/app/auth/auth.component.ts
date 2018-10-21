@@ -8,18 +8,16 @@ import { AuthService } from './auth.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-
   private showLogIn: boolean;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.showLogIn = (this.authService.status !== 'WaitingRedirectResult');
+    this.showLogIn = this.authService.status !== 'WaitingRedirectResult';
   }
 
   private onSignIn(): void {
     this.showLogIn = false;
     this.authService.signinUser();
   }
-
 }

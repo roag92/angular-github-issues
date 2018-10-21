@@ -10,17 +10,16 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-
   private addingMode = false;
   private routingEvent: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.addingMode = (this.router.url.indexOf('new') !== -1);
+    this.addingMode = this.router.url.indexOf('new') !== -1;
     this.routingEvent = this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        this.addingMode = (event.url.indexOf('new') !== -1);
+        this.addingMode = event.url.indexOf('new') !== -1;
       }
     });
   }
@@ -30,5 +29,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.routingEvent.unsubscribe();
     }
   }
-
 }

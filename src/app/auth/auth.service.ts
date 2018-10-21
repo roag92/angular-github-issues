@@ -7,14 +7,13 @@ import { User, Credential, Auth } from './auth.model';
 
 @Injectable()
 export class AuthService {
-
   private credential: Credential = new Credential('', '', '');
   public user: User;
   public status = 'None';
 
   public statusChanged = new Subject<string>();
 
-  constructor(private router: Router, private route: ActivatedRoute, private zone: NgZone) { }
+  constructor(private router: Router, private route: ActivatedRoute, private zone: NgZone) {}
 
   signinUser(): void {
     const githubAuthProvider = new firebase.auth.GithubAuthProvider();
@@ -45,32 +44,36 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return (this.credential.accessToken !== '');
+    return this.credential.accessToken !== '';
   }
 
   private getRedirectResult(): void {
-    firebase.auth().getRedirectResult().then((result: any) => {
-      if (result.credential) {
-        this.credential = <Credential>result.credential;
-        this.user = <User>{
-          avatar_url: result.additionalUserInfo.profile.avatar_url,
-          email: result.additionalUserInfo.profile.email,
-          location: result.additionalUserInfo.profile.location,
-          name: result.additionalUserInfo.profile.name,
-          username: result.additionalUserInfo.username
-        };
-        this.setAuth(<Auth>{ credential: this.credential, user: this.user });
-        this.setStatus('Logged');
-        this.zone.run(() => {
-          this.navigate('/dashboard');
-        });
-      } else {
+    firebase
+      .auth()
+      .getRedirectResult()
+      .then((result: any) => {
+        if (result.credential) {
+          this.credential = <Credential>result.credential;
+          this.user = <User>{
+            avatar_url: result.additionalUserInfo.profile.avatar_url,
+            email: result.additionalUserInfo.profile.email,
+            location: result.additionalUserInfo.profile.location,
+            name: result.additionalUserInfo.profile.name,
+            username: result.additionalUserInfo.username
+          };
+          this.setAuth(<Auth>{ credential: this.credential, user: this.user });
+          this.setStatus('Logged');
+          this.zone.run(() => {
+            this.navigate('/dashboard');
+          });
+        } else {
+          this.setStatus('None');
+        }
+      })
+      .catch(err => {
         this.setStatus('None');
-      }
-    }).catch((err) => {
-      this.setStatus('None');
-      console.log(err);
-    });
+        console.log(err);
+      });
   }
 
   private readAuth(): void {
@@ -105,7 +108,7 @@ export class AuthService {
     localStorage.setItem('auth', JSON.stringify(auth));
   }
 
-  private getAuth(): Auth|null {
+  private getAuth(): Auth | null {
     const auth = JSON.parse(localStorage.getItem('auth'));
     if (auth !== null) {
       return <Auth>auth;
@@ -128,5 +131,4 @@ export class AuthService {
   private navigate(state: string): void {
     this.router.navigate([state]);
   }
-
 }

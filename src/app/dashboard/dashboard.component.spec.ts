@@ -16,17 +16,19 @@ import { GITHUB_CONFIG } from './github.model';
 @Component({
   template: `ListIssuesComponent`
 })
-export class ListIssuesComponent { }
+export class ListIssuesComponent {}
 
 @Component({
   template: `NewIssueComponent`
 })
-export class NewIssueComponent { }
+export class NewIssueComponent {}
 
 export const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {
-    path: 'dashboard', component: DashboardComponent, children: [
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
       { path: '', redirectTo: 'list', pathMatch: 'full' },
       { path: 'list', component: ListIssuesComponent },
       { path: 'new', component: NewIssueComponent }
@@ -35,7 +37,6 @@ export const routes: Routes = [
 ];
 
 describe('DashboardComponent', () => {
-
   let fixture: ComponentFixture<DashboardComponent>;
   let dashboard: DashboardComponent;
   let location: Location;
@@ -43,19 +44,9 @@ describe('DashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        DashboardComponent,
-        ListIssuesComponent,
-        NewIssueComponent
-      ],
-      imports: [
-        MatIconModule,
-        RouterTestingModule.withRoutes(routes)
-      ],
-      providers: [
-        AuthService,
-        { provide: GITHUB_CONFIG, useValue: environment.github }
-      ]
+      declarations: [DashboardComponent, ListIssuesComponent, NewIssueComponent],
+      imports: [MatIconModule, RouterTestingModule.withRoutes(routes)],
+      providers: [AuthService, { provide: GITHUB_CONFIG, useValue: environment.github }]
     }).compileComponents();
     fixture = TestBed.createComponent(DashboardComponent);
     dashboard = fixture.debugElement.componentInstance;
@@ -90,5 +81,4 @@ describe('DashboardComponent', () => {
     const button = fixture.debugElement.nativeElement.querySelector('div.row > button#list');
     expect(button).toBeTruthy();
   }));
-
 });

@@ -14,7 +14,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
@@ -72,4 +72,4 @@ import { GITHUB_CONFIG } from './dashboard/github.model';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

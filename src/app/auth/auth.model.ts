@@ -4,7 +4,6 @@ export class Credential {
   public signInMethod: string;
 
   constructor(accessToken, providerId, signInMethod) {}
-
 }
 
 export class User {
