@@ -70,4 +70,28 @@ describe('AppComponent', () => {
     app.ngOnInit();
     expect(authService.checkStatus).toHaveBeenCalled();
   }));
+
+  it('should subscribe for change status (authService.statusChanged)', async(() => {
+    spyOn(authService.statusChanged, 'subscribe');
+    app.ngOnInit();
+    expect(authService.statusChanged.subscribe).toHaveBeenCalled();
+  }));
+
+  it('should navigate to auth component (/auth)', fakeAsync(() => {
+    router.navigate(['/auth']);
+    tick(50);
+    fixture.detectChanges();
+    expect(location.path()).toBe('/auth');
+    const element = fixture.debugElement.query(By.css('app-auth'));
+    expect(element).toBeTruthy();
+  }));
+
+  it('should navigate to dashboard component (/dashboard)', fakeAsync(() => {
+    router.navigate(['/dashboard']);
+    tick(50);
+    fixture.detectChanges();
+    expect(location.path()).toBe('/dashboard');
+    const element = fixture.debugElement.query(By.css('app-dashboard'));
+    expect(element).toBeTruthy();
+  }));
 });
