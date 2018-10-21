@@ -11,7 +11,7 @@ import { environment } from './../../environments/environment';
 
 import { DashboardComponent } from './dashboard.component';
 import { AuthService } from './../auth/auth.service';
-import { GITHUB_CONFIG } from './github.model';
+import { GITHUB_CONFIG } from './../github/github.model';
 
 @Component({
   template: `ListIssuesComponent`
@@ -55,13 +55,13 @@ describe('DashboardComponent', () => {
     router.initialNavigation();
   }));
 
-  it('should create the header component', async(() => {
-    expect(dashboard).toBeTruthy();
-  }));
-
   afterEach(() => {
     document.body.removeChild(fixture.debugElement.nativeElement);
   });
+
+  it('should create the header component', async(() => {
+    expect(dashboard).toBeTruthy();
+  }));
 
   it('should show the new issue button (/dashboard/list)', fakeAsync(() => {
     router.navigate(['/dashboard/list']);

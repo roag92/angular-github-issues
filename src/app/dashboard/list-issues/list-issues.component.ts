@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material';
 
-import { GithubApiService } from './../github.api.service';
-import { Issue } from '../github.model';
+import { GithubApiService } from './../../github/github.api.service';
+import { Issue } from './../../github/github.model';
 
 @Component({
   selector: 'app-list-issues',

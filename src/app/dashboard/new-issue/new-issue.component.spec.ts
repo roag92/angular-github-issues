@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
@@ -13,8 +13,8 @@ import { of } from 'rxjs';
 import { environment } from './../../../environments/environment';
 
 import { NewIssueComponent } from './new-issue.component';
-import { GithubApiService } from './../github.api.service';
-import { GITHUB_CONFIG } from './../github.model';
+import { GithubApiService } from './../../github/github.api.service';
+import { GITHUB_CONFIG } from './../../github/github.model';
 
 describe('NewIssueCompoenet', () => {
   let fixture: ComponentFixture<NewIssueComponent>;

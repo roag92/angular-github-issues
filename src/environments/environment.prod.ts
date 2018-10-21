@@ -9,7 +9,7 @@ export const environment = {
     messagingSenderId: ''
   },
   github: {
-    github: 'https://api.github.com',
+    api: 'https://api.github.com',
     service: 'repos',
     username: '',
     repository: ''

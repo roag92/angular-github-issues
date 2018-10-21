@@ -31,10 +31,10 @@ import { AuthComponent } from './auth/auth.component';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard.service';
-import { GithubApiService } from './dashboard/github.api.service';
+import { GithubApiService } from './github/github.api.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
-import { GITHUB_CONFIG } from './dashboard/github.model';
+import { GITHUB_CONFIG } from './github/github.model';
 
 @NgModule({
   declarations: [

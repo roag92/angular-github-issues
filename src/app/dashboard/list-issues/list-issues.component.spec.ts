@@ -10,8 +10,8 @@ import { of } from 'rxjs';
 import { environment } from './../../../environments/environment';
 
 import { ListIssuesComponent } from './list-issues.component';
-import { GithubApiService } from './../github.api.service';
-import { GITHUB_CONFIG } from './../github.model';
+import { GithubApiService } from '../../github/github.api.service';
+import { GITHUB_CONFIG } from '../../github/github.model';
 
 const mockIssues = [
   {

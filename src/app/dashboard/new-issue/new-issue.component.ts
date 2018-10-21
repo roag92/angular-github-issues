@@ -3,8 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { GithubApiService } from './../github.api.service';
-import { Assignee, Milestone, Label, Issue } from '../github.model';
+import { GithubApiService } from '../../github/github.api.service';
+import { Assignee, Milestone, Label, Issue } from '../../github/github.model';
 
 @Component({
   selector: 'app-new-issue',
@@ -59,10 +59,10 @@ export class NewIssueComponent implements OnInit, OnDestroy {
   onCreateIssue(form: NgForm): void {
     this.waitingResponse = true;
     const issue = form.value;
-    if (issue.assignees === '') {
+    if (!issue.assignee) {
       delete issue.assignees;
     }
-    if (issue.labels === '') {
+    if (!issue.labels) {
       delete issue.labels;
     }
     this.subscriptionCreateIssue = this.githubApiService.createIssue(<Issue>issue).subscribe((response: any) => {
