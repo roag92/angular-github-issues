@@ -46,7 +46,7 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The 
 
 ## Unit Tests
 
-Run `ng test` to run unit test via Karma and Jasmine. For get the coverage run the command `ng test --code-coverage`.
+Run `ng test` to run unit test via Karma and Jasmine. For get the coverage run the command `npm run test`.
 
 ## Angular CLI
 

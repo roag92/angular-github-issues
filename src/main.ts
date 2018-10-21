@@ -9,13 +9,12 @@ import 'web-animations-js';
 
 import * as firebase from 'firebase';
 
-firebase.initializeApp(
-  environment.firebase
-);
+firebase.initializeApp(environment.firebase);
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
   .catch(err => console.log(err));
