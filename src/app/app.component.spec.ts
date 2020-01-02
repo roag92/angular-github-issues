@@ -14,13 +14,17 @@ import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-auth',
-  template: `AuthComponent`
+  template: `
+    AuthComponent
+  `
 })
 export class AuthComponent {}
 
 @Component({
   selector: 'app-dashboard',
-  template: `DashboardComponent`
+  template: `
+    DashboardComponent
+  `
 })
 export class DashboardComponent {}
 

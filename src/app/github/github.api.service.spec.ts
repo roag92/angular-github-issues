@@ -7,9 +7,7 @@ import { Issue, Assignee, Label, Milestone, GITHUB_CONFIG } from './github.model
 import { environment } from './../../environments/environment';
 
 describe('GithubService', () => {
-  const rootUrl = `${environment.github.api}/${environment.github.service}/${environment.github.username}/${
-    environment.github.repository
-  }/`;
+  const rootUrl = `${environment.github.api}/${environment.github.service}/${environment.github.username}/${environment.github.repository}/`;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

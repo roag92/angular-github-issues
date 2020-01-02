@@ -14,12 +14,16 @@ import { AuthService } from './../auth/auth.service';
 import { GITHUB_CONFIG } from './../github/github.model';
 
 @Component({
-  template: `ListIssuesComponent`
+  template: `
+    ListIssuesComponent
+  `
 })
 export class ListIssuesComponent {}
 
 @Component({
-  template: `NewIssueComponent`
+  template: `
+    NewIssueComponent
+  `
 })
 export class NewIssueComponent {}
 
