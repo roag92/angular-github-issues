@@ -1,5 +1,5 @@
 export class Credential {
-  public accessToken = '';
+  public oauthAccessToken = '';
   public providerId: string;
   public signInMethod: string;
 

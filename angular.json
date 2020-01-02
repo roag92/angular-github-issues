@@ -27,8 +27,8 @@
             "scripts": [
               "node_modules/marked/marked.min.js",
               "node_modules/highlight.js/lib/highlight.js",
-              "node_modules/ace/build/src-min/ace.js",
-              "node_modules/ace/build/src-min/mode-markdown.js"
+              "node_modules/ace/src-min/ace.js",
+              "node_modules/ace/src-min/mode-markdown.js"
             ]
           },
           "configurations": {
@@ -95,8 +95,8 @@
             "scripts": [
               "node_modules/marked/marked.min.js",
               "node_modules/highlight.js/lib/highlight.js",
-              "node_modules/ace/build/src-min/ace.js",
-              "node_modules/ace/build/src-min/mode-markdown.js"
+              "node_modules/ace/src-min/ace.js",
+              "node_modules/ace/src-min/mode-markdown.js"
             ],
             "styles": [
             ],

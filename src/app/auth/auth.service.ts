@@ -40,11 +40,11 @@ export class AuthService {
   }
 
   getToken(): string {
-    return this.credential.accessToken;
+    return this.credential.oauthAccessToken;
   }
 
   isAuthenticated(): boolean {
-    return this.credential.accessToken !== '';
+    return this.credential.oauthAccessToken !== '';
   }
 
   private getRedirectResult(): void {
