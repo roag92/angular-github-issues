@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Installing repository
 
-Type `npm install` to get all dependencies.
+Type `yarn install` to get all dependencies.
 
 This application does an OAuth Authentication with GitHub through Firebase to create and read issues from this repository.
 
@@ -42,11 +42,11 @@ export const environment = {
 
 ## Development server
 
-Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `yarn start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Unit Tests
 
-Run `ng test` to run unit test via Karma and Jasmine. For get the coverage run the command `npm run test`.
+Run `ng test` to run unit test via Karma and Jasmine. For get the coverage run the command `yarn test`.
 
 ## Angular CLI
 
