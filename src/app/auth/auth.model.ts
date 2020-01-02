@@ -1,9 +1,5 @@
 export class Credential {
-  public oauthAccessToken = '';
-  public providerId: string;
-  public signInMethod: string;
-
-  constructor(accessToken, providerId, signInMethod) {}
+  constructor(public oauthAccessToken: string, public providerId: string, public signInMethod: string) {}
 }
 
 export class User {
